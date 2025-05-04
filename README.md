@@ -39,7 +39,6 @@ This project focuses on accelerating product intake, reducing manual overhead, a
 ### Prerequisites
 
 - Python 3.9+
-- Node.js 16+ (for frontend)
 - AWS credentials (for Textract)
 - NetSuite sandbox environment (for API testing)
 - Tesseract installed and available on system path
