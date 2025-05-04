@@ -1,0 +1,148 @@
+/* Root Variables */
+:root {
+  --primary-bg: #efece5; /* Updated background color for all pages */
+  --secondary-bg: #F8FAFF;
+  --accent-cyan: #73c4f5;
+  --accent-blue: #0957bd;
+  --accent-purple: #2d1775;
+  --accent-red: #c0055b;
+  --text-dark: #1A2639;
+  --border-color: rgba(224, 224, 224, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* General Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg); /* Apply the new background color */
+  color: var(--text-dark);
+}
+
+/* Header Styling */
+.header {
+  background: var(--accent-blue);
+  color: white;
+  padding: 20px 20px;
+  text-align: center;
+  border-radius: 0 0 15px 15px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header.minimized {
+  padding: 5px 20px;
+  font-size: 14px;
+  border-radius: 0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: font-size 0.3s ease;
+}
+
+.header.minimized h1 {
+  font-size: 16px;
+}
+
+/* Container Styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+/* Form Section Styling */
+.form-section {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--border-color);
+}
+
+.form-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+  color: var(--accent-blue);
+  margin-top: 0;
+  border-bottom: 2px solid var(--accent-cyan);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(115, 196, 245, 0.2);
+}
+
+input[readonly] {
+  background-color: rgba(245, 245, 245, 0.8);
+  color: var(--text-dark);
+  cursor: not-allowed;
+}
+
+/* Button Styling */
+.btn {
+  background: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(9, 87, 189, 0.2);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}

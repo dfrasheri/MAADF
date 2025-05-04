@@ -1,0 +1,74 @@
+<div class="sub-navbar-container">
+    <div class="sub-navbar">
+      <a href="#company-overview" class="sub-nav-link">Company Overview</a>
+      <a href="#evaluation-criteria" class="sub-nav-link">Evaluation Criteria</a>
+      <a href="#scoring" class="sub-nav-link">Scoring</a>
+      <a href="#final-results" class="sub-nav-link">Final Results</a>
+    </div>
+  </div>
+  
+  <style>
+    .sub-navbar-container {
+      display: flex;
+      justify-content: center;
+      padding: 5px 0 15px;
+    }
+  
+    .sub-navbar {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.8); /* Glass effect */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      width: 90%;
+      transition: all 0.3s ease; /* Smooth transition for minimizing */
+    }
+  
+    .sub-navbar.minimized {
+      padding: 5px 20px; /* Reduced padding when minimized */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow */
+    }
+  
+    .sub-nav-link {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #1A2639; /* Text dark */
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      position: relative;
+    }
+  
+    .sub-nav-link:hover {
+      color: #0957bd; /* Accent blue */
+      transform: scale(1.1); /* Slight zoom effect */
+    }
+  
+    .sub-nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #73c4f5; /* Accent cyan */
+      transition: width 0.3s ease;
+    }
+  
+    .sub-nav-link:hover:after {
+      width: 100%;
+    }
+  
+    .sub-nav-link.active {
+      color: #0957bd; /* Accent Blue */
+      font-weight: bold;
+    }
+  
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>

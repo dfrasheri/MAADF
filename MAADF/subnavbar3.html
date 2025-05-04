@@ -1,0 +1,60 @@
+<div class="sub-navbar-container">
+    <div class="sub-navbar">
+      <a href="#evaluation-criteria" class="sub-nav-link">Evaluation Criteria</a>
+      <a href="#scoring-methodology" class="sub-nav-link">Scoring Methodology</a>
+      <a href="#team-evaluation" class="sub-nav-link">Team Evaluation</a>
+      <a href="#final-decision" class="sub-nav-link">Final Decision</a>
+    </div>
+  </div>
+  
+  <style>
+    .sub-navbar-container {
+      display: flex;
+      justify-content: center;
+      padding: 5px 0 15px;
+    }
+  
+    .sub-navbar {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.8); /* Glass effect */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+      width: 90%;
+    }
+  
+    .sub-nav-link {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #1A2639; /* Text dark */
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+  
+    .sub-nav-link:hover {
+      color: #c0055b; /* Accent red */
+      transform: scale(1.1); /* Slight zoom effect */
+    }
+  
+    .sub-nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #de0a59; /* Accent dark red */
+      transition: width 0.3s ease;
+    }
+  
+    .sub-nav-link:hover:after {
+      width: 100%;
+    }
+  </style>

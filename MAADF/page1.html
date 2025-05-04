@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADF - Submit Tender</title>
+  <style>
+  :root {
+      --primary-bg: #FFFFFF;
+      --secondary-bg: #F8FAFF;
+      --accent-cyan: #73c4f5;
+      --accent-blue: #0957bd;
+      --accent-purple: #2d1775;
+      --accent-red: #c0055b;
+      --accent-dark-red: #de0a59;
+      --text-dark: #1A2639;
+      --border-color: rgba(224, 224, 224, 0.3);
+      --glass-bg: rgba(255, 255, 255, 0.8);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.1);
+      --gradient-blue: linear-gradient(135deg, #0957bd, #73c4f5);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--secondary-bg);
+      color: var(--text-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(115, 196, 245, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(45, 23, 117, 0.07) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+   
+    /* Navbar */
+    .navbar-container {
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      max-width: 1200px;
+      width: 90%;
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    }
+
+    .logo {
+      height: 50px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--gradient-blue);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-blue);
+    }
+
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+
+    .login-btn {
+      background: var(--gradient-blue);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(9, 87, 189, 0.2);
+    }
+    .login-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .login-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .login-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+            text-align: center;
+            margin: 10px 0;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .login-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .login-dropdown:hover .login-content {
+            display: block;
+        }
+        .user-icon-container {
+            background-color: #f0f4f8;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+    /* Sub-navbar */
+    .sub-navbar-container {
+      display: flex;
+      justify-content: center;
+      padding: 5px 0 15px;
+    }
+
+    .sub-navbar {
+      display: flex;
+      justify-content: center;
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      max-width: 800px;
+      width: 80%;
+    }
+
+    .sub-nav-link {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .sub-nav-link:hover {
+      color: var(--accent-purple);
+    }
+
+    .sub-nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--accent-purple);
+      transition: width 0.3s;
+    }
+
+    .sub-nav-link:hover:after {
+      width: 100%;
+    }
+
+  
+
+    /* Form Sections */
+    .form-section {
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--border-color);
+    }
+
+    .form-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section h2 {
+      color: var(--accent-blue);
+      margin-top: 0;
+      border-bottom: 2px solid var(--accent-cyan);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: inherit;
+      background-color: rgba(255, 255, 255, 0.8);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(115, 196, 245, 0.2);
+    }
+
+    input[readonly] {
+      background-color: rgba(245, 245, 245, 0.8);
+      color: var(--text-dark);
+      cursor: not-allowed;
+    }
+
+    .btn {
+      background: var(--gradient-blue);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(9, 87, 189, 0.2);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .header {
+      background: var(--accent-cyan); /* Accent Cyan */
+      color: white;
+      padding: 20px 20px; /* Reduced padding for a thinner header */
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-md);
+      position: sticky; /* Sticky header */
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease; /* Smooth transition for minimizing */
+    }
+
+    .header.minimized {
+      padding: 5px 20px; /* Minimized padding */
+      font-size: 14px; /* Smaller font size */
+      border-radius: 0; /* Remove border radius when minimized */
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px; /* Reduced font size for thinner header */
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: font-size 0.3s ease; /* Smooth transition for font size */
+    }
+
+    .header.minimized h1 {
+      font-size: 16px; /* Smaller font size when minimized */
+    }
+  </style>
+</head>
+<body>
+  <!-- Main Navbar -->
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+
+  <!-- Sub-navbar -->
+  <div id="subnavbar"></div>
+  <script>
+    fetch('subnavbar1.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('subnavbar').innerHTML = data;
+      });
+  </script>
+
+  <!-- Header -->
+  <div class="header" id="page-header">
+    <h1>Request for Tender Submission</h1>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="form-section" id="basic-info">
+      <h2>Tender Information</h2>
+      <div class="form-group">
+        <label for="tender-ref">Tender Reference Number</label>
+        <input type="text" id="tender-ref" value="AADF-2025-EDU-003" readonly>
+      </div>
+      <div class="form-group">
+        <label for="tender-title">Tender Title</label>
+        <input type="text" id="tender-title" value="Education & Leadership Development Program" readonly>
+      </div>
+      <div class="form-group">
+        <label for="submission-deadline">Submission Deadline</label>
+        <input type="text" id="submission-deadline" value="May 30, 2025, 17:00 CEST" readonly>
+      </div>
+    </div>
+
+    <div class="form-section" id="company-details">
+      <h2>Company Information</h2>
+      <div class="form-group">
+        <label for="company-name">Company Name*</label>
+        <input type="text" id="company-name" placeholder="Enter your company's legal name" required>
+      </div>
+      <div class="form-group">
+        <label for="company-address">Registered Address*</label>
+        <textarea id="company-address" rows="3" placeholder="Enter your company's registered address" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="company-registration">Registration Number*</label>
+        <input type="text" id="company-registration" placeholder="Enter company registration number" required>
+      </div>
+    </div>
+
+    <div class="form-section" id="financial-proposal">
+      <h2>Financial Proposal</h2>
+      <div class="form-group">
+        <label for="total-budget">Total Budget (EUR)*</label>
+        <input type="number" id="total-budget" placeholder="Enter your total proposed budget" required>
+      </div>
+      <div class="form-group">
+        <label for="payment-terms">Payment Terms*</label>
+        <select id="payment-terms" required>
+          <option value="">Select payment terms</option>
+          <option value="milestone">Milestone-based</option>
+          <option value="monthly">Monthly</option>
+          <option value="quarterly">Quarterly</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="financial-notes">Additional Financial Notes</label>
+        <textarea id="financial-notes" rows="4" placeholder="Any additional financial information or clarifications"></textarea>
+      </div>
+    </div>
+
+    <div class="form-section" id="review-submit">
+      <h2>Review & Submit</h2>
+      <div class="form-group">
+        <label for="confirm-accurate">Declaration</label>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <input type="checkbox" id="confirm-accurate" style="width: auto;">
+          <label for="confirm-accurate" style="display: inline;">I confirm that all information provided is accurate and complete.</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="authorized-person">Authorized Person Name*</label>
+        <input type="text" id="authorized-person" placeholder="Full name of authorized person" required>
+      </div>
+      <div class="form-group">
+        <label for="authorized-position">Position*</label>
+        <input type="text" id="authorized-position" placeholder="Position in the company" required>
+      </div>
+      
+      <div class="actions">
+        <button class="btn btn-secondary">Save as Draft</button>
+        <button class="btn">Submit Tender</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+  <script>
+    // Minimize header on scroll
+    const header = document.getElementById('page-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('minimized');
+      } else {
+        header.classList.remove('minimized');
+      }
+    });
+  </script>
+</body>
+</html>

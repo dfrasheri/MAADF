@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADF - Bidder Evaluation</title>
+  <style>
+    :root {
+      --primary-bg: #FFFFFF;
+      --secondary-bg: #F8FAFF;
+      --accent-cyan: #73c4f5;
+      --accent-blue: #0957bd;
+      --accent-purple: #2d1775;
+      --accent-red: #c0055b;
+      --text-dark: #1A2639;
+      --border-color: rgba(224, 224, 224, 0.3);
+      --glass-bg: rgba(255, 255, 255, 0.8);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--secondary-bg);
+      color: var(--text-dark);
+    }
+
+    .header {
+      background: var(--accent-blue);
+      color: white;
+      padding: 20px 20px;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header.minimized {
+      padding: 5px 20px;
+      font-size: 14px;
+      border-radius: 0;
+    }
+
+    .login-btn {
+      background: var(--gradient-blue);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(9, 87, 189, 0.2);
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: font-size 0.3s ease;
+    }
+
+    .header.minimized h1 {
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    .form-section {
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--border-color);
+    }
+
+    .form-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section h2 {
+      color: var(--accent-blue);
+      margin-top: 0;
+      border-bottom: 2px solid var(--accent-cyan);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: inherit;
+      background-color: rgba(255, 255, 255, 0.8);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(115, 196, 245, 0.2);
+    }
+
+    input[readonly] {
+      background-color: rgba(245, 245, 245, 0.8);
+      color: var(--text-dark);
+      cursor: not-allowed;
+    }
+
+    .btn {
+      background: var(--accent-blue);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(9, 87, 189, 0.2);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Main Navbar -->
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+  <!-- Sub-navbar -->
+  <div id="subnavbar"></div>
+  <script>
+    fetch('subnavbar4.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('subnavbar').innerHTML = data;
+      });
+  </script>
+
+  <!-- Header -->
+  <div class="header" id="page-header">
+    <h1>Bidder Evaluation</h1>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="form-section" id="company-overview">
+      <h2>Company Overview</h2>
+      <div class="form-group">
+        <label for="company-name">Company Name</label>
+        <input type="text" id="company-name" value="Example Company Ltd." readonly>
+      </div>
+      <div class="form-group">
+        <label for="company-address">Registered Address</label>
+        <textarea id="company-address" rows="3" readonly>123 Example Street, City, Country</textarea>
+      </div>
+    </div>
+
+    <div class="form-section" id="evaluation-criteria">
+      <h2>Evaluation Criteria</h2>
+      <div class="form-group">
+        <label for="criteria-1">Criterion 1</label>
+        <input type="text" id="criteria-1" value="Experience in similar projects" readonly>
+      </div>
+      <div class="form-group">
+        <label for="criteria-2">Criterion 2</label>
+        <input type="text" id="criteria-2" value="Financial stability" readonly>
+      </div>
+    </div>
+
+    <div class="form-section" id="scoring">
+      <h2>Scoring</h2>
+      <div class="form-group">
+        <label for="score-1">Score for Criterion 1</label>
+        <input type="text" id="score-1" value="85/100" readonly>
+      </div>
+      <div class="form-group">
+        <label for="score-2">Score for Criterion 2</label>
+        <input type="text" id="score-2" value="90/100" readonly>
+      </div>
+    </div>
+
+    <div class="form-section" id="final-results">
+      <h2>Final Results</h2>
+      <div class="form-group">
+        <label for="final-score">Final Score</label>
+        <input type="text" id="final-score" value="88/100" readonly>
+      </div>
+      <div class="form-group">
+        <label for="recommendation">Recommendation</label>
+        <textarea id="recommendation" rows="3" readonly>Proceed with contract negotiation.</textarea>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Minimize header on scroll
+    const header = document.getElementById('page-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('minimized');
+      } else {
+        header.classList.remove('minimized');
+      }
+    });
+  </script>
+</body>
+</html>

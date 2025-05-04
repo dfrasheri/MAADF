@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AADF - Technical Proposal</title>
+  <style>
+    :root {
+      --primary-bg: #FFFFFF;
+      --secondary-bg: #F8FAFF;
+      --accent-cyan: #73c4f5;
+      --accent-blue: #0957bd;
+      --accent-purple: #2d1775;
+      --accent-red: #c0055b;
+      --accent-dark-red: #de0a59;
+      --text-dark: #1A2639;
+      --border-color: rgba(224, 224, 224, 0.3);
+      --glass-bg: rgba(255, 255, 255, 0.8);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.1);
+      --gradient-blue: linear-gradient(135deg, #0957bd, #73c4f5);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--secondary-bg);
+      color: var(--text-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(115, 196, 245, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(45, 23, 117, 0.07) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .header {
+      background: var(--accent-blue); /* Accent Blue */
+      color: white;
+      padding: 20px 20px; /* Reduced padding for a thinner header */
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-md);
+      position: sticky; /* Sticky header */
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease; /* Smooth transition for minimizing */
+    }
+
+    .header.minimized {
+      padding: 5px 20px; /* Minimized padding */
+      font-size: 14px; /* Smaller font size */
+      border-radius: 0; /* Remove border radius when minimized */
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px; /* Reduced font size for thinner header */
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: font-size 0.3s ease; /* Smooth transition for font size */
+    }
+
+    .header.minimized h1 {
+      font-size: 16px; /* Smaller font size when minimized */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    .form-section {
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--border-color);
+    }
+
+    .form-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section h2 {
+      color: var(--accent-blue);
+      margin-top: 0;
+      border-bottom: 2px solid var(--accent-cyan);
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-family: inherit;
+    }
+
+    .login-btn {
+      background: var(--gradient-blue);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(9, 87, 189, 0.2);
+    }
+    .btn {
+      background-color: var(--accent-blue);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #2d4372;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Main Navbar -->
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+  <!-- Sub-navbar -->
+  <div id="subnavbar"></div>
+  <script>
+    fetch('subnavbar2.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('subnavbar').innerHTML = data;
+      });
+  </script>
+
+  <!-- Header -->
+  <div class="header" id="page-header">
+    <h1>Technical Proposal</h1>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="form-section" id="project-understanding">
+      <h2>Project Understanding</h2>
+      <!-- Content for Project Understanding -->
+    </div>
+
+    <div class="form-section" id="technical-approach">
+      <h2>Technical Approach</h2>
+      <!-- Content for Technical Approach -->
+    </div>
+
+    <div class="form-section" id="previous-experience">
+      <h2>Previous Experience</h2>
+      <!-- Content for Previous Experience -->
+    </div>
+
+    <div class="form-section" id="project-portfolio">
+      <h2>Project Portfolio</h2>
+      <!-- Content for Project Portfolio -->
+    </div>
+
+    <div class="form-section" id="technical-documentation">
+      <h2>Technical Documentation</h2>
+      <!-- Content for Technical Documentation -->
+    </div>
+  </div>
+
+  <script>
+    // Minimize header on scroll
+    const header = document.getElementById('page-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('minimized');
+      } else {
+        header.classList.remove('minimized');
+      }
+    });
+  </script>
+</body>
+</html>
